@@ -2,19 +2,19 @@ import pyautogui
 from time import sleep
 import logging
 
-x=10
-y=12
+x=1
+y=1
 ## Logging configuration
 logging.basicConfig(format='%(asctime)s %(message)s')
 
 def load_animation(loading_time=1):
     anim_symbols = ['⣾', '⣷', '⣯', '⣟', '⡿', '⢿', '⣻', '⣽']
     i = 0
-    load_count_for_second = len()
+    #load_count_for_second = len()
     for anim_count in range(64 * loading_time):
-        i = (i + 1) % len(symbols)
-        print('\r\033[K%s loading...' % anim_symbols[i], flush=True, end='')
-        sleep(0.1)
+        i = (i + 1) % len(anim_symbols)
+        print('\r\033[K%s ' % anim_symbols[i], flush=True, end='')
+        sleep(0.3)
 
 def main():
     while True:
@@ -24,10 +24,11 @@ def main():
         pyautogui.moveTo(x, y)
         # Perform a right-click
         pyautogui.click(button="left")
-        logging.warning(f"Mouse left Pos x:{x} y:{y}")
+        pyautogui.click(button="left")
+        logging.info(f"Mouse left Pos x:{x} y:{y}")
         pyautogui.moveTo(mouse_cord)
-        logging.warning(f"Mouse left Pos x:{mouse_cord.x} y:{mouse_cord.y}")
-        sleep(200)
+        logging.info(f"Mouse left Pos x:{mouse_cord.x} y:{mouse_cord.y}")
+        load_animation(20)
 
 try:
     if __name__ == "__main__":
